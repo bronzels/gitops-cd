@@ -1,0 +1,7 @@
+nameSuffix: -file
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ../../../base/file
+patchesStrategicMerge:
+- deployment_patch.yaml

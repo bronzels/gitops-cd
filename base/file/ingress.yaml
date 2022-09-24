@@ -1,0 +1,16 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: myroute
+  namespace: servpy
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: PathPrefix(`/file`)
+      kind: Rule
+      services:
+        - name: myservice-file
+          port: 80
+      middlewares:
+        - name: strip1prefixregex

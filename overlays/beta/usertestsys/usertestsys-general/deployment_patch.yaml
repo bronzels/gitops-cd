@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mydeploy-usertestsys-general
+  namespace: servpy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: usertestsys-general
+  template:
+    metadata:
+      labels:
+        app: usertestsys-general
+    spec:
+      containers:
+        - image: harbor.my.org:1080/python-app/usertestsys-general:latest
+          name: usertestsys
+          resources:
+            limits:
+              cpu: "2"
+              memory: 4Gi
+            requests:
+              cpu: 200m
+              memory: 2Gi
+

@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mydeploy-usertestsys-speakingevaluation
+  namespace: servpy
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: usertestsys-speakingevaluation
+  template:
+    metadata:
+      labels:
+        app: usertestsys-speakingevaluation
+    spec:
+      hostAliases:
+        - ip: "43.255.231.119"
+          hostnames:
+            - "ise-api.xfyun.cn"
+        - ip: "42.62.116.19"
+          hostnames:
+            - "ise-api.xfyun.cn"
+        - ip: "125.254.169.11"
+          hostnames:
+            - "ise-api.xfyun.cn"
+        - ip: "59.107.24.13"
+          hostnames:
+            - "ise-api.xfyun.cn"
+        - ip: "42.62.42.12"
+          hostnames:
+            - "ise-api.xfyun.cn"
+        - ip: "59.107.24.3"
+          hostnames:
+            - "ise-api.xfyun.cn"
+        - ip: "42.62.42.19"
+          hostnames:
+            - "ise-api.xfyun.cn"
+      containers:
+        - image: harbor.my.org:1080/python-app/usertestsys-speakingevaluation:latest
+          name: usertestsys
+          resources:
+            limits:
+              cpu: "2"
+              memory: 6Gi
+            requests:
+              cpu: "1"
+              memory: 3Gi
+

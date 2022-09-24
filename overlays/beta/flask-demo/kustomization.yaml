@@ -1,0 +1,10 @@
+nameSuffix: -flask-demo
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ../../../base/flask-demo
+patchesStrategicMerge:
+- replica_count.yaml
+images:
+- name: harbor.my.org:1080/python-app/flask-demo
+  newTag: "20210128073828_149"

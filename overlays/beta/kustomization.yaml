@@ -1,0 +1,9 @@
+commonLabels:
+  variant: beta
+bases:
+- setup
+- usertestsys
+- usertestsys-md
+- file
+- sandman
+- sparkop-scheduled

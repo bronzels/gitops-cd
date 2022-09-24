@@ -1,0 +1,17 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: myroute-sm2
+  namespace: servpy
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: PathPrefix(`/mo/test/sm2`)
+      kind: Rule
+      services:
+        - name: myservice-sm2-usertestsys
+          port: 5000
+      middlewares:
+        - name: strip3prefixregex
+        - name: auth-usertestsys

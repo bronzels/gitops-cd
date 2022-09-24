@@ -1,0 +1,20 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: usertestsys-pvc
+  namespace: servpy
+  labels:
+    storage: usertestsys-nfs-pvc
+  annotations:
+    kubernetes.io/description: "PersistentVolumeClaim for PV"
+spec:
+  selector:
+    matchLabels:
+      storage: usertestsys-nfs-pv
+  accessModes:
+    - ReadWriteMany
+  volumeMode: Filesystem
+  storageClassName: nfs
+  resources:
+    requests:
+      storage: 1Gi

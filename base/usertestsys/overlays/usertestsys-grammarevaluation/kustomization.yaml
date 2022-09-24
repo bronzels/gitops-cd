@@ -1,0 +1,5 @@
+nameSuffix: -usertestsys-grammarevaluation
+resources:
+- ../../../usertestsys/base
+- service.yaml
+- ingress.yaml

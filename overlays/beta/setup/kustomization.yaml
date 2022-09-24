@@ -1,0 +1,10 @@
+resources:
+- mvn-m2-nfs-pv.yaml
+- mvn-m2-pvc.yaml
+- pypi-nfs-pv.yaml
+- pypi-pvc.yaml
+- configmap-servpy-usertestsys.yaml
+- usertestsys-nfs-pv.yaml
+- harborsecret-servpy.yaml
+- harborsecret-servdoc.yaml
+- ../../../base/setup

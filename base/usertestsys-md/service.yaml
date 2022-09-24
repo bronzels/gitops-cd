@@ -1,0 +1,15 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: doc-usertestsys-md
+  namespace: servdoc
+spec:
+  selector:
+    app: usertestsys-md
+  ports:
+    - name: myport
+      protocol: TCP
+      port: 4000
+      targetPort: 4000
+      nodePort: 30500
+  type: NodePort

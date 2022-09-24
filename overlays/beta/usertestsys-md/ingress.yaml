@@ -1,0 +1,16 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: myroute-usertestsys-md
+  namespace: servdoc
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: PathPrefix(`/mo/test/doc`)
+      kind: Rule
+      services:
+        - name: doc-usertestsys-md
+          port: 4000
+      middlewares:
+        - name: strip3prefixregex

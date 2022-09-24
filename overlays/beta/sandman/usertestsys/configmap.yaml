@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: myconfig-sm2-usertestsys
+  namespace: servpy
+data:
+  DB_TYPE: 'mssql'
+  DB_DRIVER: 'pymssql'
+  USERNAME: 'sa'
+  PASSWORD: 'Aks@12345'
+  DB_HOST: '192.168.0.85'
+  DB_PORT: '1433'
+  DATABASE: 'AcadsocDataAnalysisAlgorithm_rel_202103062043'
+  ARGS: '-v TestResultLast/test_user_id/int'
+

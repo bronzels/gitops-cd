@@ -1,0 +1,5 @@
+nameSuffix: -usertestsys-speakingevaluation
+resources:
+- ../../../usertestsys/base
+- service.yaml
+- ingress.yaml

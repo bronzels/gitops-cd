@@ -1,0 +1,20 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: pypi-pvc
+  namespace: default
+  labels:
+    storage: pypi-nfs-pvc
+  annotations:
+    kubernetes.io/description: "PersistentVolumeClaim for PV"
+spec:
+  selector:
+    matchLabels:
+      storage: pypi-nfs-pv
+  accessModes:
+    - ReadWriteMany
+  volumeMode: Filesystem
+  storageClassName: nfs
+  resources:
+    requests:
+      storage: 1Gi

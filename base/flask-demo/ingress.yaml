@@ -1,0 +1,16 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: myroute
+  namespace: servpy
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`dstrserv.my.org`) && PathPrefix(`/py/fld`)
+      kind: Rule
+      services:
+        - name: myservice-flask-demo
+          port: 8080
+      middlewares:
+        - name: strip2prefixregex

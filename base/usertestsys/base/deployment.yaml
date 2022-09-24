@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mydeploy
+  namespace: servpy
+spec:
+  selector:
+    matchLabels:
+      appgrp: usertestsys
+  template:
+    metadata:
+      labels:
+        appgrp: usertestsys
+    spec:
+      imagePullSecrets:
+        - name: harborsecret
+      containers:
+        - image: harbor.my.org:1080/python-app/usertestsys:latest
+          imagePullPolicy: Always
+          envFrom:
+            - configMapRef:
+                name: "usertestsys"
+          name: usertestsys
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 60
+            periodSeconds: 30
+            successThreshold: 1
+            timeoutSeconds: 60
+          readinessProbe:
+            initialDelaySeconds: 60
+            periodSeconds: 30
+            successThreshold: 1
+            timeoutSeconds: 60
+            httpGet:
+              path: /
+              port: 8080
+          volumeMounts:
+            - mountPath: /mnt/analysis_group
+              name: usertestsys-mnt
+      volumes:
+        - name: usertestsys-mnt
+          persistentVolumeClaim:
+            claimName: usertestsys-pvc

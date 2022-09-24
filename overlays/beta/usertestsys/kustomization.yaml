@@ -1,0 +1,11 @@
+commonLabels:
+  appgrp: usertestsys
+bases:
+- usertestsys-general
+- usertestsys-grammarevaluation
+- usertestsys-readingevaluation
+- usertestsys-listeningevaluation
+- usertestsys-speakingevaluation
+- usertestsys-vocabularysizeestimation
+commonAnnotations:
+  all_manual_redeploy: 2021-04-29-17-05

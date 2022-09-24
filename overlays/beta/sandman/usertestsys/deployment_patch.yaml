@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mydeploy-sm2-usertestsys
+  namespace: servpy
+spec:
+  selector:
+    matchLabels:
+      app: usertestsys
+  template:
+    metadata:
+      labels:
+        app: usertestsys
+    spec:
+      containers:
+        - image: harbor.my.org:1080/python-app/sandman
+          envFrom:
+            - configMapRef:
+                name: "myconfig-sm2-usertestsys"
+          name: sandman
+          resources:
+            limits:
+              cpu: "2"
+              memory: 4Gi
+            requests:
+              cpu: 200m
+              memory: 2Gi

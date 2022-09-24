@@ -1,0 +1,8 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: auth-usertestsys
+  namespace: servpy
+spec:
+  basicAuth:
+    secret: auth-usertestsys

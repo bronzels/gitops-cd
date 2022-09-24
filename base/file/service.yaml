@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: myservice
+  namespace: servpy
+spec:
+  selector:
+    app: file
+    appgrp: usertestsys
+  ports:
+    - name: myport
+      protocol: TCP
+      port: 80
+      targetPort: 80

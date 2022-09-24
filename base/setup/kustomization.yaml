@@ -1,0 +1,10 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- usertestsys-pvc.yaml
+- middleware_strip1prefixregex.yaml
+- middleware_strip2prefixregex.yaml
+- middleware_strip3prefixregex.yaml
+- middleware_strip3prefixregex-servdoc.yaml
+- secret_auth-usertestsys.yaml
+- middleware_auth-usertestsys.yaml

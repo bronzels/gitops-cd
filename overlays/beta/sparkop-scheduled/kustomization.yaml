@@ -1,0 +1,6 @@
+commonLabels:
+  appgrp: sparkop-scheduled
+bases:
+- pi
+commonAnnotations:
+  all_manual_redeploy: 2021-03-23-19-43

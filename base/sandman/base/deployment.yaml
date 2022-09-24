@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mydeploy-sm2
+  namespace: servpy
+spec:
+  selector:
+    matchLabels:
+      appgrp: sandman
+  template:
+    metadata:
+      labels:
+        appgrp: sandman
+    spec:
+      imagePullSecrets:
+        - name: harborsecret
+      containers:
+        - image: harbor.my.org:1080/python-app/sandman
+          name: sandman
+          livenessProbe:
+            httpGet:
+              path: /admin
+              port: 5000
+            initialDelaySeconds: 60
+            periodSeconds: 30
+            successThreshold: 1
+            timeoutSeconds: 60
+          readinessProbe:
+            initialDelaySeconds: 60
+            periodSeconds: 30
+            successThreshold: 1
+            timeoutSeconds: 60
+            httpGet:
+              path: /admin
+              port: 5000

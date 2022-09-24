@@ -1,0 +1,7 @@
+commonLabels:
+  variant: prod
+bases:
+- setup
+- usertestsys
+- usertestsys-md
+- file

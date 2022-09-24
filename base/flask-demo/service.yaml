@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: myservice
+  namespace: servpy
+spec:
+  selector:
+    app: flask-demo
+  ports:
+    - name: myport
+      protocol: TCP
+      port: 8080
+      targetPort: 8080

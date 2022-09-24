@@ -1,0 +1,11 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ../../../../base/usertestsys/overlays/usertestsys-vocabularysizeestimation
+patchesStrategicMerge:
+- deployment_patch.yaml
+commonAnnotations:
+  manual_redeploy: 2021-03-6-23-41
+images:
+- name: harbor.my.org:1080/python-app/usertestsys-vocabularysizeestimation
+  newTag: "20210429165108_612"

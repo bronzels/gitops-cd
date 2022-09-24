@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mydeploy-usertestsys-grammarevaluation
+  namespace: servpy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: usertestsys-grammarevaluation
+  template:
+    metadata:
+      labels:
+        app: usertestsys-grammarevaluation
+    spec:
+      containers:
+        - image: harbor.my.org:1080/python-app/usertestsys-grammarevaluation:latest
+          name: usertestsys
+          resources:
+            limits:
+              cpu: "2"
+              memory: 6Gi
+            requests:
+              cpu: "1"
+              memory: 3Gi
+

@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mydeploy-usertestsys-listeningevaluation
+  namespace: servpy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: usertestsys-listeningevaluation
+  template:
+    metadata:
+      labels:
+        app: usertestsys-listeningevaluation
+    spec:
+      containers:
+        - image: harbor.my.org:1080/python-app/usertestsys-listeningevaluation:latest
+          name: usertestsys
+          resources:
+            limits:
+              cpu: "2"
+              memory: 6Gi
+            requests:
+              cpu: "1"
+              memory: 3Gi
+

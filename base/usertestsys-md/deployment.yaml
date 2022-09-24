@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: doc-usertestsys-md
+  namespace: servdoc
+spec:
+  selector:
+    matchLabels:
+      app: usertestsys-md
+  template:
+    metadata:
+      labels:
+        app: usertestsys-md
+    spec:
+      imagePullSecrets:
+        - name: harborsecret
+      containers:
+        - image: harbor.my.org:1080/doc/usertestsys-md:latest
+          name: usertestsys-md

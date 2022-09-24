@@ -1,0 +1,5 @@
+nameSuffix: -usertestsys-vocabularysizeestimation-test
+resources:
+- ../../../usertestsys/base
+- service.yaml
+- ingress.yaml

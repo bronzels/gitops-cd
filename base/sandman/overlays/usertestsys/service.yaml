@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: myservice-sm2
+  namespace: servpy
+spec:
+  selector:
+    appgrp: sandman
+    app: usertestsys
+  ports:
+    - name: myport
+      protocol: TCP
+      port: 5000
+      targetPort: 5000

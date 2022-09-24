@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mydeploy
+  namespace: servpy
+spec:
+  selector:
+    matchLabels:
+      appgrp: usertestsys
+      app: file
+  template:
+    metadata:
+      labels:
+        appgrp: usertestsys
+        app: file
+    spec:
+      tolerations:
+        - key: "node-role.kubernetes.io/master"
+          operator: "Equal"
+          value: ""
+          effect: "NoSchedule"
+      affinity:            #亲和性
+        nodeAffinity:        #node亲和性
+          # 硬亲和性限制
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/hostname # 标签键名
+                    operator: NotIn      #键值运算关系 ，NotIn:label的值不在某个列表中。 表示不是node02节点就可运行
+                    values:
+                      - hadoop-pre001 # 标签键值
+      imagePullSecrets:
+        - name: harborsecret
+      containers:
+        - image: harbor.my.org:1080/base/nginx:latest
+          imagePullPolicy: Always
+          name: file
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - mountPath: /usr/share/nginx/html
+              name: data-volume
+      volumes:
+        - name: data-volume
+          hostPath:
+            path: /cdhdata1/analysis_group/usertestsys
+            type: Directory

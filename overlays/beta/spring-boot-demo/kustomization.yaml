@@ -1,0 +1,10 @@
+nameSuffix: -spring-boot-demo
+images:
+- name: harbor.my.org:1080/maven-app/spring-boot-demo
+  newTag: "20210126074045_116"
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ../../../base/spring-boot-demo
+patchesStrategicMerge:
+- replica_count.yaml

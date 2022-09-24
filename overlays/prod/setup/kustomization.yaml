@@ -1,0 +1,7 @@
+resources:
+- configmap-servpy-usertestsys.yaml
+- configmap-servpy-usertestsys-test.yaml
+- usertestsys-nfs-pv.yaml
+- harborsecret-servpy.yaml
+- harborsecret-servdoc.yaml
+- ../../../base/setup

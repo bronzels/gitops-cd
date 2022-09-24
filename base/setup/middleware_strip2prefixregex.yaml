@@ -1,0 +1,9 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: strip2prefixregex
+  namespace: servpy
+spec:
+  stripPrefixRegex:
+    regex:
+      - "/[a-z0-9]+/[a-z0-9]+"

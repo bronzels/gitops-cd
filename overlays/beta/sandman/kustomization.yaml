@@ -1,0 +1,6 @@
+commonLabels:
+  appgrp: sandman
+bases:
+- usertestsys
+commonAnnotations:
+  all_manual_redeploy: 2021-03-23-19-43

@@ -1,0 +1,12 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ../../../../base/sandman/overlays/usertestsys
+- configmap.yaml
+patchesStrategicMerge:
+- deployment_patch.yaml
+commonAnnotations:
+  manual_redeploy: 2021-03-31-20-19
+images:
+- name: harbor.my.org:1080/python-app/sandman
+  newTag: "20210407153143_570"

@@ -1,0 +1,8 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ../../../../base/sparkop-scheduled/overlays/pi
+patchesStrategicMerge:
+- crd_patch.yaml
+commonAnnotations:
+  manual_redeploy: 2021-04-16-17-50
